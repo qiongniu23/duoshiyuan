@@ -1,0 +1,194 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: "fzlt";
+    src: url("../font/fzlt.TTF");
+}
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #f6f6f6;
+}
+section{
+    background-color: #f6f6f6;
+}
+.row {
+    margin: 0;
+}
+#home {
+    height: 620px;
+    padding: 152px 80px 80px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background: url("../images/dunhuang/banner-img.jpg") 0 0 no-repeat;
+    background-size: 100% 100%;
+    font-family: "NotoSansHansHeavy", "Microsoft YaHei";
+}
+#home h1 {
+    padding-top: 38px;
+    padding-bottom: 100px;
+    background: url("../images/dunhuang/dunhuang-icon.png") center bottom no-repeat;
+    font-size: 50px;
+    font-size: 5rem;
+    font-family: "fzlt", "Microsoft YaHei";
+}
+#home .bg_image{
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: -1;
+}
+#home .content {
+    margin: 0 auto;
+    text-align: center;
+    color: #fff;
+    padding: 120px 0;
+}
+.detail {
+    padding: 50px 0;
+    margin-top: 20px;
+    display: inline-block;
+    text-align: center;
+}
+.detail .button {
+    padding: 10px 30px;
+    background-color: rgba(255, 255, 255, 0.2);
+    -moz-border-radius: 7em;
+    -webkit-border-radius: 7em;
+    border-radius: 7em;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 16px;
+}
+#logo img{
+    width: 200px;
+    margin: 0 auto;
+}
+.parts {
+    height: 500px;
+    padding: 0 20%;
+    text-align: center;
+    overflow: hidden;
+    font-family: "NotoSansHansHeavy", "Microsoft YaHei";
+}
+.parts.parts_last {
+    margin-bottom: 40px;
+}
+.img img {
+    padding-top: 25px;
+}
+.help-bgimg .img img {
+    padding-top: 70px;
+}
+.parts .pull-left, .parts .pull-right {
+    height: 100%;
+    text-align: center;
+    width: 50%;
+}
+.pull-left img, .pull-left .text-outer, .pull-right {
+    float: right;
+}
+.pull-right img, .pull-right .text-outer, .pull-left {
+    float: left;
+}
+.parts .pull-right.img, .parts .pull-left.img{
+    margin: 0 auto;
+}
+.text-outer {
+    height: 100%;
+    display: table;
+}
+.parts .pull-left img, .parts .pull-right img {
+    max-width: 100%;
+    max-height: 100%
+}
+.parts .text_content {
+    display: table-cell;
+    vertical-align: middle;
+    overflow: hidden;
+    word-wrap : break-word;
+    white-space: normal;
+}
+.help-bgimg {
+    background: #c85800 url("../images/dunhuang/map.png") center top no-repeat;
+    background-size: auto 400px;
+    color: #fff;
+}
+.text_content_title {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: bolder;
+    font-family: "NotoSansHansHeavy", "Microsoft YaHei";
+    text-align: left;
+}
+.text_content_con {
+    margin-bottom: 15px;
+    line-height: 24px;
+    text-align: left;
+    font-size: 14px;
+    font-family: "NotoSansHansRegular", "Microsoft YaHei";
+}
+@media screen and (max-width: 1366px) {
+    .parts {
+        padding: 0 8%;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .container {
+        height: 100%;
+        overflow: hidden;
+    }
+    .img {
+        line-height: 500px;
+    }
+    .parts .text_content {
+        padding: 20px 40px;
+    }
+}
+@media screen and (max-width: 1024px) {
+    .pull-left img, .pull-left .text-outer, .pull-right img, .pull-right .text-outer {
+        float: none;
+        margin: 0 auto;
+    }
+    #home {
+        padding: 50px;
+    }
+    .bg_image {
+        height: 600px;
+    }
+    .parts {
+        height: auto;
+        padding: 0 5%;
+    }
+    .parts .pull-left,.parts .pull-right {
+        height: auto;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 10px;
+        float: none;
+    }
+    .text p{
+        text-align: left;
+    }
+    .help-bgimg {
+        background-image: url("../images/dunhuang/map.png");
+        background-size: 80% auto;
+    }
+    .help-bgimg .img img {
+        padding-top: 0;
+    }
+}
+@media screen and (max-width: 640px) {
+    #home {
+        height: auto;
+        padding: 50px 5% 0;
+    }
+    #home h1 {
+        background-size: 100% auto;
+    }
+    #home .content {
+        padding-top: 50px;
+    }
+}
