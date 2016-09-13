@@ -74,25 +74,25 @@
 }
 .our_service p, .our_service h3 {
 	text-align: center;
-	color: #000;
+	color: white;
 }
 .service1 div {
-	background: url("../images/service.png") center 0 no-repeat;
+	background: url("../images/huizhanshejizhizuo.png") center -80px no-repeat;
 }
 .service2 div {
-	background: url("../images/service.png") center -200px no-repeat;
+	background: url("../images/pinpaituiguang.png") center -80px no-repeat;
 }
 .service3 div {
-	background: url("../images/service.png") center -400px no-repeat;
+	background: url("../images/html5zhizuochuanbo.png") center -80px no-repeat;
 }
 .service4 div {
-	background: url("../images/service.png") center -600px no-repeat;
+	background: url("../images/huizhanshejizhizuo.png") center -80px no-repeat;
 }
 .service5 div {
-	background: url("../images/service.png") center -800px no-repeat;
+	background: url("../images/huizhanshejizhizuo.png") center -80px no-repeat;
 }
 .service6 div {
-	background: url("../images/service.png") center -1000px no-repeat;
+	background: url("../images/huizhanshejizhizuo.png") center -80px no-repeat;
 }
 .service7 {
 	position: relative;
@@ -205,10 +205,10 @@
 	margin-right: 40px;
 }
 .institutions li, .enterprises li {
-	min-width: 150px;
+	min-width: 80px;
 }
 .enterprises li {
-	margin-right: 80px;
+	margin-right: 10px;
 }
 .partner_box li {
 	float: left;
@@ -252,7 +252,7 @@
 }
 #abouts {
 	padding-top: 100px;
-	background: url("../images/s7-bg.png") 0 0 no-repeat;
+	background: #FFC152;
 	background-size: 100% 100%;
 }
 .contact_us p {
