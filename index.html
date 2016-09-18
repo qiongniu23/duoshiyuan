@@ -44,8 +44,11 @@
             </div>
             <div class="right">
                 <ul>
-                    <li><a href="javascript:;"><img src="images/weixin.PNG" alt="微信"></a></li>
-                    <li><a href="javascript:;"><img src="images/weibo.PNG" alt="微博"></a></li>
+                    <li id="weixin">
+                        <a href="javascript:;"><img src="images/wchatgray.png" alt="微信"></a>
+                        <img class="erweima" src="images/erweima.jpg" alt="二维码">
+                    </li>
+                    <!--<li><a href="javascript:;"><img src="images/weibo.png" alt="微博"></a></li>-->
                 </ul>
             </div>
         </div>
@@ -53,10 +56,10 @@
     <div class="first-screen screen" id="first">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><a href="jsvascipt:;"><img src="images/swiper/1.jpg" alt=""></a></div>
-                <div class="swiper-slide"><a href="jsvascipt:;"><img src="images/swiper/2.jpg" alt=""></a></div>
-                <div class="swiper-slide"><a href="jsvascipt:;"><img src="images/swiper/3.jpg" alt=""></a></div>
-                <div class="swiper-slide"><a href="jsvascipt:;"><img src="images/swiper/4.jpg" alt=""></a></div>
+                <div class="swiper-slide"><a href="javascript:;"><img src="images/swiper/1.jpg" alt=""></a></div>
+                <div class="swiper-slide"><a href="javascript:;"><img src="images/swiper/2.jpg" alt=""></a></div>
+                <div class="swiper-slide"><a href="javascript:;"><img src="images/swiper/3.jpg" alt=""></a></div>
+                <div class="swiper-slide"><a href="javascript:;"><img src="images/swiper/4.jpg" alt=""></a></div>
             </div>
             <div class="cover_title"></div>
             <div class="swiper-pagination"></div>
@@ -67,15 +70,42 @@
     </div>
     <div class="second-screen screen" id="second">
         <ul>
-            <li><a href="javascript:;"><img src="images/second/1.jpg" alt=""></a></li>
-            <li><a href="javascript:;"><img src="images/second/2.jpg" alt=""></a></li>
-            <li><a href="javascript:;"><img src="images/second/3.jpg" alt=""></a></li>
-            <li><a href="javascript:;"><img src="images/second/4.jpg" alt=""></a></li>
-            <li><a href="javascript:;"><img src="images/second/5.jpg" alt=""></a></li>
-            <li><a href="javascript:;"><img src="images/second/6.jpg" alt=""></a></li>
-            <li><a href="javascript:;"><img src="images/second/7.jpg" alt=""></a></li>
-            <li><a href="javascript:;"><img src="images/second/8.jpg" alt=""></a></li>
-            <li><a href="javascript:;"><img src="images/second/9.jpg" alt=""></a></li>
+            <li><a href="javascript:;">
+                <img class="gray" src="images/second/1.jpg" alt="">
+                <img class="colour" src="images/second/1-colour.jpg" alt="">
+            </a></li>
+            <li><a href="javascript:;">
+                <img class="gray" src="images/second/2.jpg" alt="">
+                <img class="colour" src="images/second/2-colour.jpg" alt="">
+            </a></li>
+            <li><a href="javascript:;">
+                <img class="gray" src="images/second/3.jpg" alt="">
+                <img class="colour" src="images/second/3-colour.jpg" alt="">
+            </a></li>
+            <li><a href="javascript:;">
+                <img class="gray" src="images/second/4.jpg" alt="">
+                <img class="colour" src="images/second/4.jpg" alt="">
+            </a></li>
+            <li><a href="javascript:;">
+                <img class="gray" src="images/second/5.jpg" alt="">
+                <img class="colour" src="images/second/5-colour.jpg" alt="">
+            </a></li>
+            <li><a href="javascript:;">
+                <img class="gray" src="images/second/6.jpg" alt="">
+                <img class="colour" src="images/second/6-colour.jpg" alt="">
+            </a></li>
+            <li><a href="javascript:;">
+                <img class="gray" src="images/second/7.jpg" alt="">
+                <img class="colour" src="images/second/7-colour.jpg" alt="">
+            </a></li>
+            <li><a href="javascript:;">
+                <img class="gray" src="images/second/8.jpg" alt="">
+                <img class="colour" src="images/second/8-colour.jpg" alt="">
+            </a></li>
+            <li><a href="javascript:;">
+                <img class="gray" src="images/second/9.jpg" alt="">
+                <img class="colour" src="images/second/9-colour.jpg" alt="">
+            </a></li>
         </ul>
     </div>
     <div class="third-screen screen" id="third">
@@ -167,6 +197,31 @@
 <script>
 $(function () {
     (function (win,$) {
+        // 第二屏图片预加载
+        var second = $('#second'),imgBoxs = second.find('li');
+        imgBoxs.on('click mouseover',function () {
+            var me = $(this),
+                colour = me.find('.colour'),
+                gray = me.find('.gray');
+            var otherColour = me.siblings().find('.colour'),
+                    otherGray = me.siblings().find('.gray');
+            colour.show();
+            otherColour.hide();
+            otherGray.show();
+            gray.hide();
+        });
+
+        // 平台监测
+        var UA = {};
+        var p = navigator.platform.toLocaleLowerCase();
+        UA.win = (p.indexOf('win') == 0);
+        UA.mac = (p.indexOf('mac') == 0);
+        UA.x11 = (p == 'X11') || (p.indexOf('linux') == 0);
+        if (UA.win || UA.mac || UA.x11) {
+            UA.isPC = true;
+        }else {
+            UA.isMobile = true;
+        }
         var $win = $(win);
         if (win.Swiper) {
             var swiper = new Swiper('.swiper-container', {
@@ -179,24 +234,38 @@ $(function () {
                 prevButton: '.swiper-button-prev'
             });
         }
-
         var topH = $('.header').outerHeight();
-        var mMenu = $('.m-menu');
-        mMenu.on('click','li',function (e) {
+        var mMenu = $('.m-menu'), mid = $('.mid');
+        mid.on('click','li',function (e) {
             e.preventDefault();
             var $this = $(this),
                     index = $this.index(),
-                    aEle = $this.find('a');
+                    aEle = $this.find('a'),
+                    $winWidth = $win.width();
             var scrollTop = 0;
             if (index) {
                 scrollTop =  $(aEle.attr('href')).offset().top - topH;
             }
-            mMenu.hide();
+            if ($winWidth < 900) {
+                mMenu.hide();
+            }
             $('body').animate({scrollTop: scrollTop}, 200)
         });
         $('.s-menu').on('click',function () {
             mMenu.toggle();
         });
+
+        var weixin = $('#weixin'), erweima = $('.erweima');
+        weixin.on('click mouseover',function () {
+            var img = $(this).find('a img');
+            img.attr('src','images/wchatgreen.png');
+            erweima.show();
+        }).on('mouseout',function () {
+            var img = $(this).find('a img');
+            erweima.hide();
+            img.attr('src','images/wchatgray.png');
+        });
+
     })(window,jQuery);
 });
 </script>
